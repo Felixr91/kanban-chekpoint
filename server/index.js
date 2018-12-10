@@ -44,6 +44,8 @@ server.use((req, res, next) => {
 let boardRoutes = require('./server-assets/routes/board')
 server.use('/api/boards', boardRoutes)
 
+let listRoutes = require('./server-assets/routes/list')
+server.use('/api/boards/', listRoutes)
 
 
 
@@ -51,9 +53,9 @@ server.use('/api/boards', boardRoutes)
 
 
 //Catch all
-server.use('*', (req, res, next) => {
+server.use('*', (error, req, res, next) => {
   res.status(404).send({
-    error: 'No matching routes'
+    error: error || 'no matching routes'
   })
 })
 

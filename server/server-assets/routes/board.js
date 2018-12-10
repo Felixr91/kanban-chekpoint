@@ -1,7 +1,7 @@
 let router = require('express').Router()
 let Boards = require('../models/board')
 
-//GET
+//GET Boards
 router.get('/', (req, res, next) => {
   Boards.find({ authorId: req.session.uid })
     .then(data => {
@@ -13,7 +13,7 @@ router.get('/', (req, res, next) => {
     })
 })
 
-//POST
+//POST Boards
 router.post('/', (req, res, next) => {
   req.body.authorId = req.session.uid
   Boards.create(req.body)
@@ -26,7 +26,7 @@ router.post('/', (req, res, next) => {
     })
 })
 
-//PUT
+//PUT Boards
 router.put('/:id', (req, res, next) => {
   Boards.findById(req.params.id)
     .then(board => {
@@ -48,7 +48,7 @@ router.put('/:id', (req, res, next) => {
     })
 })
 
-//DELETE
+//DELETE Boards
 router.delete('/:id', (req, res, next) => {
   Boards.findById(req.params.id)
     .then(board => {
@@ -65,6 +65,9 @@ router.delete('/:id', (req, res, next) => {
       });
     })
 })
+
+
+
 
 
 module.exports = router
