@@ -2,7 +2,7 @@ let router = require('express').Router()
 let Lists = require('../models/list')
 
 //GET Lists  A OKAY?
-router.get('/', (req, res, next) => {
+router.get('/:boardId', (req, res, next) => {
   Lists.find({ authorId: req.session.uid })
     .then(data => {
       res.send(data)
@@ -14,9 +14,9 @@ router.get('/', (req, res, next) => {
 })
 
 //POST Lists  A OKAY!!!!!!!
-router.post('/:boardId', (req, res, next) => {
+router.post('/', (req, res, next) => {
   req.body.authorId = req.session.uid
-  req.body.boardId = req.params.boardId
+  // req.body.boardId = req.params.boardId
   Lists.create(req.body)
     .then(newList => {
       res.send(newList)
@@ -28,8 +28,8 @@ router.post('/:boardId', (req, res, next) => {
 })
 
 //PUT Lists
-router.put('/:id', (req, res, next) => {
-  Lists.findById(req.params.id)
+router.put('/:listId', (req, res, next) => {
+  Lists.findById(req.params.listId)
     .then(list => {
       if (!list.authorId.equals(req.session.uid)) {
         return res.status(401).send("ACCESS DENIED! Only Author can edit a list.")
@@ -50,8 +50,8 @@ router.put('/:id', (req, res, next) => {
 })
 
 //DELETE Lists
-router.delete('/:id', (req, res, next) => {
-  Lists.findById(req.params.id)
+router.delete('/:listId', (req, res, next) => {
+  Lists.findById(req.params.listId)
     .then(list => {
       if (!list.authorId.equals(req.session.uid)) {
         return res.status(401).send("ACCESS DENIED! Only author can delete!")

@@ -2,7 +2,7 @@ let router = require('express').Router()
 let Boards = require('../models/board')
 
 //GET Boards
-router.get('/', (req, res, next) => {
+router.get('/:authorId', (req, res, next) => {
   Boards.find({ authorId: req.session.uid })
     .then(data => {
       res.send(data)
@@ -27,8 +27,8 @@ router.post('/', (req, res, next) => {
 })
 
 //PUT Boards
-router.put('/:id', (req, res, next) => {
-  Boards.findById(req.params.id)
+router.put('/:boardId', (req, res, next) => {
+  Boards.findById(req.params.boardId)
     .then(board => {
       if (!board.authorId.equals(req.session.uid)) {
         return res.status(401).send("ACCESS DENIED!")
@@ -49,8 +49,8 @@ router.put('/:id', (req, res, next) => {
 })
 
 //DELETE Boards
-router.delete('/:id', (req, res, next) => {
-  Boards.findById(req.params.id)
+router.delete('/:boardId', (req, res, next) => {
+  Boards.findById(req.params.boardId)
     .then(board => {
       if (!board.authorId.equals(req.session.uid)) {
         return res.status(401).send("ACCESS DENIED!")
