@@ -50,4 +50,8 @@
   .action {
     cursor: pointer;
   }
+
+  /* body {
+    background-image: linear-gradient(to right top, #ffffff, #f1edfc, #e4daf8, #dac7f3, #d1b4ec);
+  } */
 </style>

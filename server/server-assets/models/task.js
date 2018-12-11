@@ -8,7 +8,8 @@ let schema = new Schema({
   description: { type: String, required: true },
   created: { type: Number, required: true, default: Date.now() },
   authorId: { type: ObjectId, ref: 'User', required: true },
-  listId: { type: ObjectId, ref: "List", required: true }
+  listId: { type: ObjectId, ref: "List", required: true },
+  boardId: { type: ObjectId, ref: 'Board', required: true }
 })
 
 

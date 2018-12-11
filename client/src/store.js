@@ -63,6 +63,7 @@ export default new Vuex.Store({
         })
     },
     addBoard({ commit, dispatch }, boardData) {
+      debugger
       api.post('boards', boardData)
         .then(serverBoard => {
           dispatch('getBoards')
