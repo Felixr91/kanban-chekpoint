@@ -1,6 +1,9 @@
 <template>
   <div class="boards">
-    WELCOME TO THE BOARDS!!!
+    <div>
+      <button @click="logout">Logout</button>
+    </div>
+    <h3>WELCOME TO BOARDS!</h3>
     <form @submit.prevent="addBoard">
       <input type="text" placeholder="title" v-model="newBoard.title" required>
       <input type="text" placeholder="description" v-model="newBoard.description">
@@ -40,12 +43,14 @@
     },
     methods: {
       addBoard() {
-        debugger
         this.$store.dispatch("addBoard", this.newBoard);
         this.newBoard = { title: "", description: "" };
       },
       deleteBoard(boardId) {
         this.$store.dispatch("deleteBoard", boardId);
+      },
+      logout() {
+        this.$store.dispatch("logout")
       }
     }
   };

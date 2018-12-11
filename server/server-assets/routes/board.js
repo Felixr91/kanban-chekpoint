@@ -2,7 +2,7 @@ let router = require('express').Router()
 let Boards = require('../models/board')
 
 //GET Boards
-router.get('/:authorId', (req, res, next) => {
+router.get('/', (req, res, next) => {
   Boards.find({ authorId: req.session.uid })
     .then(data => {
       res.send(data)
