@@ -111,10 +111,16 @@ export default new Vuex.Store({
           dispatch('getLists')
         })
     },
+    editList({ commit, dispatch }, payload) {
+      api.put('lists/' + payload.listId, { title: payload.listTitle })
+        .then(res => {
+          dispatch('getLists')
+        })
+    },
 
     //TASKS
-    getTasks({ commit, dispatch }, listId) {
-      api.get('tasks/' + listId)
+    getAllTasks({ commit, dispatch }) {
+      api.get('tasks/')
         .then(res => {
           commit('setTasks', res.data)
         })
@@ -122,13 +128,36 @@ export default new Vuex.Store({
     addTask({ commit, dispatch }, taskData) {
       api.post('tasks', taskData)
         .then(serverBoard => {
-          dispatch('getTasks')
+          dispatch('getAllTasks')
         })
     },
     deleteTask({ commit, dispatch }, taskId) {
       api.delete('tasks/' + taskId)
         .then(res => {
-          dispatch('getTasks')
+          dispatch('getAllTasks')
+        })
+    },
+    editTask({ commit, dispatch }, payload) {
+      debugger
+      api.put('tasks/' + payload.taskId, payload)
+        .then(res => {
+          dispatch('getAllTasks')
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
+    //Comments
+    addComment({ commit, dispatch }, commentData) {
+      api.post('comments', commentData)
+        .then(res => {
+          dispatch('getAllComments')
+        })
+    },
+    getAllComments({ commit, dispatch }) {
+      api.get('comments/')
+        .then(res => {
+          commit('setComments', res.data)
         })
     },
   }

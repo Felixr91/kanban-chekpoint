@@ -1,9 +1,12 @@
 <template>
-  <div class="board">
+  <div class="board container">
     {{boardId}}
     <h1>Lists:</h1>
-    <list v-for="list in lists" :list="list">
-    </list>
+    <div d-flex justify-content-center>
+      <div class="row">
+        <list v-for="list in lists" :list="list"></list>
+      </div>
+    </div>
     <form @submit.prevent="addList">
       <input v-model="newList.title" type="text" name="listTitle" placeholder="List Title">
       <button type="submit">Add List</button>
@@ -21,6 +24,11 @@
         newList: {
           title: "",
           boardId: this.$route.params.boardId
+        },
+        newTask: {
+          title: "",
+          description: "",
+          listId: this.$route.params.listId
         }
       }
     },
@@ -33,6 +41,9 @@
     computed: {
       lists() {
         return this.$store.state.lists
+      },
+      tasks() {
+        return this.$store.state.tasks
       }
     },
     mounted() {
@@ -42,6 +53,10 @@
       addList() {
         this.$store.dispatch('addList', this.newList);
         this.newList = { title: "", boardId: this.bId }
+      },
+      addTask() {
+        this.$store.dispatch('addTask', this.newTask);
+        this.newTask = { title: "", description: "", listId: this.lId }
       }
     },
     props: ["boardId"],

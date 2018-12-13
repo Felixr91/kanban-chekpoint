@@ -13,6 +13,17 @@ router.get('/:listId', (req, res, next) => {
     })
 })
 
+router.get('/', (req, res, next) => {
+  Tasks.find({ authorId: req.session.uid })
+    .then(data => {
+      res.send(data)
+    })
+    .catch(err => {
+      console.log(err)
+      next()
+    })
+})
+
 //POST Tasks  A OKAY!!!!!!!
 router.post('/', (req, res, next) => {
   req.body.authorId = req.session.uid

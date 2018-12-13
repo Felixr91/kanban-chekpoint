@@ -34,6 +34,7 @@ router.put('/:listId', (req, res, next) => {
       if (!list.authorId.equals(req.session.uid)) {
         return res.status(401).send("ACCESS DENIED! Only Author can edit a list.")
       }
+      //req.body equals the object we're sending and then it will update the list title
       list.update(req.body, (err) => {
         if (err) {
           console.log(err)

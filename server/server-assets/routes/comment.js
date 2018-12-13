@@ -13,6 +13,17 @@ router.get('/:taskId', (req, res, next) => {
     })
 })
 
+router.get('/', (req, res, next) => {
+  Comments.find({ authorId: req.session.uid })
+    .then(data => {
+      res.send(data)
+    })
+    .catch(err => {
+      console.log(err)
+      next()
+    })
+})
+
 //POST Comments  A OKAY!!!!!!!
 router.post('/', (req, res, next) => {
   req.body.authorId = req.session.uid
