@@ -1,6 +1,12 @@
 <template>
   <div class="board container">
-    {{boardId}}
+    <!-- {{boardId}} -->
+    <div class="row">
+      <div class="col-12 d-flex justify-content-end">
+        <button @click="home">Home</button>
+        <button @click="logout">Logout</button>
+      </div>
+    </div>
     <h1>Lists:</h1>
     <div d-flex justify-content-center>
       <div class="row">
@@ -57,6 +63,13 @@
       addTask() {
         this.$store.dispatch('addTask', this.newTask);
         this.newTask = { title: "", description: "", listId: this.lId }
+      },
+
+      logout() {
+        this.$store.dispatch("logout")
+      },
+      home() {
+        this.$store.dispatch("home")
       }
     },
     props: ["boardId"],

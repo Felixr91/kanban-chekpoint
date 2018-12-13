@@ -72,6 +72,9 @@ export default new Vuex.Store({
           router.push({ name: 'login' })
         })
     },
+    home({ commit, dispatch }) {
+      router.push({ name: 'boards' })
+    },
     //BOARDS
     getBoards({ commit, dispatch }) {
       api.get('boards')
@@ -138,7 +141,6 @@ export default new Vuex.Store({
         })
     },
     editTask({ commit, dispatch }, payload) {
-      debugger
       api.put('tasks/' + payload.taskId, payload)
         .then(res => {
           dispatch('getAllTasks')
@@ -146,7 +148,18 @@ export default new Vuex.Store({
         .catch(err => {
           console.log(err)
         })
+
     },
+    moveTask({ commit, dispatch }, payload) {
+      api.put('tasks/' + payload._id, payload)
+        .then(res => {
+          dispatch('getAllTasks')
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
+
     //Comments
     addComment({ commit, dispatch }, commentData) {
       api.post('comments', commentData)
@@ -160,5 +173,11 @@ export default new Vuex.Store({
           commit('setComments', res.data)
         })
     },
+    deleteComment({ commit, dispatch }, commentId) {
+      api.delete('comments/' + commentId)
+        .then(res => {
+          dispatch('getAllComments')
+        })
+    }
   }
 })
