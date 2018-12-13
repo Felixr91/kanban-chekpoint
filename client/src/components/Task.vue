@@ -9,7 +9,7 @@
     <!-- Where comments WILL SHOW -->
     <div>
       <div class="btn-group dropright">
-        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+        <button type="button" class="btn dropdown-toggle border" data-toggle="dropdown" aria-haspopup="true"
           aria-expanded="false">
           Show Comments
         </button>

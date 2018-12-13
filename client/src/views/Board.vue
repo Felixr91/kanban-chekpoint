@@ -1,27 +1,24 @@
 <template>
-  <div class="board container">
-    <!-- {{boardId}} -->
-    <div class="row">
-      <div class="col-12 d-flex justify-content-end">
-        <button @click="home">Home</button>
-        <button @click="logout">Logout</button>
-      </div>
-    </div>
-    <h1>Lists:</h1>
-    <div d-flex justify-content-center>
+  <div class="board container-fluid">
+    <navbar></navbar>
+    <h1 class="mt-4 fontbanger">{{title}}</h1>
+    <div class="d-flex justify-content-center">
       <div class="row">
-        <list v-for="list in lists" :list="list"></list>
+        <list v-for="list in listsById" :list="list"></list>
       </div>
     </div>
     <form @submit.prevent="addList">
       <input v-model="newList.title" type="text" name="listTitle" placeholder="List Title">
-      <button type="submit">Add List</button>
+      <div>
+        <button class="btn btn-success mt-1" type="submit">Add List</button>
+      </div>
     </form>
   </div>
 </template>
 
 <script>
   import List from '@/components/List.vue'
+  import Navbar from '@/components/NavBar.vue'
   export default {
     name: "board",
     data() {
@@ -48,12 +45,15 @@
       lists() {
         return this.$store.state.lists
       },
+      listsById() {
+        return this.$store.state.lists.filter(l => l.boardId == this.boardId)
+      },
       tasks() {
         return this.$store.state.tasks
       }
     },
     mounted() {
-      this.$store.dispatch("getLists", this.boardId)
+      this.$store.dispatch("getLists", this.$route.params.boardId)
     },
     methods: {
       addList() {
@@ -64,7 +64,6 @@
         this.$store.dispatch('addTask', this.newTask);
         this.newTask = { title: "", description: "", listId: this.lId }
       },
-
       logout() {
         this.$store.dispatch("logout")
       },
@@ -72,9 +71,20 @@
         this.$store.dispatch("home")
       }
     },
-    props: ["boardId"],
+    props: ["boardId", "title"],
     components: {
-      List
+      List,
+      Navbar
     }
   };
 </script>
+
+<style>
+  .fontbanger {
+    font-family: 'Bangers', cursive;
+  }
+
+  .board {
+    height: 100vh;
+  }
+</style>

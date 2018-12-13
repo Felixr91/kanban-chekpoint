@@ -96,8 +96,8 @@ export default new Vuex.Store({
     },
 
     //LISTS
-    getLists({ commit, dispatch }, boardId) {
-      api.get('lists/' + boardId)
+    getLists({ commit, dispatch }) {
+      api.get('lists/')
         .then(res => {
           commit('setLists', res.data)
         })

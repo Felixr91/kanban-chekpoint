@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+
     <router-view />
   </div>
 </template>
@@ -22,11 +23,11 @@
     color: #2c3e50;
   }
 
-  #nav a.router-link-exact-active {
-    color: #42b983;
-  }
-
   .fontlogo {
     font-family: 'Bangers', cursive;
+  }
+
+  body {
+    background-image: linear-gradient(to top, #e3f808, #b0ec42, #83dd60, #5dcc75, #42b983);
   }
 </style>

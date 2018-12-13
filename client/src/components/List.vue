@@ -22,7 +22,7 @@
         <li class="list-group-item bg-warning">add a task <i class="fas fa-plus-circle hover" @click="createTask=!createTask"></i></li>
 
         <!-- TASK ADDITION INVISIBLE ROW -->
-        <div class="card-header" v-if="createTask">
+        <div class="card-body" v-if="createTask">
           <form @submit.prevent="addTask">
             <input type="text" placeholder="Task Title" v-model="newTask.title">
             <input type="text" placeholder="Task Description" v-model="newTask.description">
@@ -97,5 +97,13 @@
 <style scoped>
   .hover {
     cursor: pointer;
+  }
+
+  .bg-button {
+    background-color: rgb(147, 180, 139)
+  }
+
+  .bg-dropdown {
+    background-color: rgb(132, 145, 163)
   }
 </style>

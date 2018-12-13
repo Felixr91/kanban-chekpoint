@@ -12,6 +12,16 @@ router.get('/:boardId', (req, res, next) => {
       next()
     })
 })
+router.get('/', (req, res, next) => {
+  Lists.find({ authorId: req.session.uid })
+    .then(data => {
+      res.send(data)
+    })
+    .catch(err => {
+      console.log(err)
+      next()
+    })
+})
 
 //POST Lists  A OKAY!!!!!!!
 router.post('/', (req, res, next) => {
