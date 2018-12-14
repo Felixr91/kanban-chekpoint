@@ -12,16 +12,29 @@
         <h1>Login to see your boardz, dog!</h1>
       </div>
       <div>
+
         <form v-if="loginForm" @submit.prevent="loginUser">
-          <input type="email" v-model="creds.email" placeholder="email" class="mr-2">
-          <input type="password" v-model="creds.password" placeholder="password" class="mr-2">
-          <button class="btn btn-warning" type="submit">Login</button>
+          <div class="col-12 mb-2">
+            <input type="email" v-model="creds.email" placeholder="email" class="mr-2">
+          </div>
+          <div class="col-12 mb-2">
+            <input type="password" v-model="creds.password" placeholder="password" class="mr-2">
+          </div>
+          <button class="btn btn-warning mb-2" type="submit">Login</button>
         </form>
         <form v-else @submit.prevent="register">
-          <input type="text" v-model="newUser.name" placeholder="name">
-          <input type="email" v-model="newUser.email" placeholder="email">
-          <input type="password" v-model="newUser.password" placeholder="password">
-          <button type="submit">Create Account</button>
+          <div class="col-12 mb-2">
+            <input type="text" v-model="newUser.name" placeholder="name">
+          </div>
+          <div class="col-12 mb-2">
+            <input type="email" v-model="newUser.email" placeholder="email">
+          </div>
+          <div class="col-12 mb-2">
+            <input type="password" v-model="newUser.password" placeholder="password">
+          </div>
+          <div class="col-12 mb-2">
+            <button class=" btn btn-warning" type="submit">Create Account</button>
+          </div>
         </form>
       </div>
     </div>
