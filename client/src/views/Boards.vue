@@ -27,7 +27,7 @@
         <div class="card" style="width: 15rem">
           <div class="card-header d-flex justify-content-between">
             <!-- you can pass a prop through a router link -->
-            <router-link :to="{name: 'board', params: {boardId: board._id, title: board.title}}">{{board.title}}</router-link>
+            <router-link :to="{name: 'board', params: {boardId: board._id, title: board.title, description: board.description}}">{{board.title}}</router-link>
             <i class="fas fa-trash-alt ml-2 hover" @click="deleteBoard(board._id)"></i>
           </div>
           <ul class="list-group list-group-flush">

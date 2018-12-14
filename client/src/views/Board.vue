@@ -2,7 +2,8 @@
   <div class="board container-fluid">
     <navbar></navbar>
     <h1 class="mt-4 fontbanger">{{title}}</h1>
-    <div class="row">
+    <h6 class="mb-4">{{description}}</h6>
+    <div class="row justify-content-center">
       <!-- <div class="col-12 d-flex justify-content-around"> -->
 
       <list v-for="list in listsById" :list="list"></list>
@@ -73,7 +74,7 @@
         this.$store.dispatch("home")
       }
     },
-    props: ["boardId", "title"],
+    props: ["boardId", "title", "description"],
     components: {
       List,
       Navbar
