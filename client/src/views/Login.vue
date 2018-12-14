@@ -34,7 +34,7 @@
 
     <div class="row">
       <div class="col-12 mt-5">
-        <img :src="logo" style="height: 300px" alt="logo">
+        <img :src="logo" style="height: 200px" alt="logo">
       </div>
     </div>
 

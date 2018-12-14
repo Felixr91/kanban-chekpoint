@@ -2,10 +2,12 @@
   <div class="board container-fluid">
     <navbar></navbar>
     <h1 class="mt-4 fontbanger">{{title}}</h1>
-    <div class="d-flex justify-content-center">
-      <div class="row">
-        <list v-for="list in listsById" :list="list"></list>
-      </div>
+    <div class="row">
+      <!-- <div class="col-12 d-flex justify-content-around"> -->
+
+      <list v-for="list in listsById" :list="list"></list>
+      <!-- 
+      </div> -->
     </div>
     <form @submit.prevent="addList">
       <input v-model="newList.title" type="text" name="listTitle" placeholder="List Title">

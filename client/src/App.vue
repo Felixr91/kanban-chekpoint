@@ -29,5 +29,11 @@
 
   body {
     background-image: linear-gradient(to top, #e3f808, #b0ec42, #83dd60, #5dcc75, #42b983);
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    /* background-repeat: no-repeat; */
+    /* background-size: cover; */
+    /* position: absolute; */
   }
 </style>

@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div class="card mb-3 mt-3 mr-5" style="width: 18rem;">
+  <div class="col-md-4 col-12 card-p">
+    <div class="card mb-3 mt-3">
       <div class="card-header">
         {{newTitle.listTitle || list.title}}
         <i class="fas fa-pencil-alt ml-1 hover" @click="edit=!edit"></i>
@@ -106,4 +106,9 @@
   .bg-dropdown {
     background-color: rgb(132, 145, 163)
   }
+
+  /* .card-p {
+    display: flex;
+    flex-wrap: wrap;
+  } */
 </style>

@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "debug": "node index.js",
-    "start": "node index.js",
+    "start": "node server/index.js",
     "dev": "node index.js"
   },
-  "author": "Mark Ohnsman <mark.ohnsman@gmail.com>",
+  "author": "Felix Ramirez and Malik Whitfield",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.16.0",
@@ -18,5 +18,8 @@
     "express": "^4.14.1",
     "express-session": "^1.15.0",
     "mongoose": "^4.8.1"
+  },
+  "engines": {
+    "node": "^10"
   }
 }
